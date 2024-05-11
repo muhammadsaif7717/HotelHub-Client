@@ -1,14 +1,37 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
+import { useContext } from "react";
+import { AuthContext } from "../../Contexts/AuthProvider";
 
 const NavBar = () => {
+  const { user, signOutUser } = useContext(AuthContext)
+
+  const handleSignOut = () => {
+    signOutUser()
+      .then(() => {
+        console.log('User logged out')
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
+  }
+
   const links = (
     <>
       <NavLink className="px-5" to="/">
         Home
       </NavLink>
+      <NavLink className="px-5" to="/rooms">
+        Rooms
+      </NavLink>
+      <NavLink className="px-5" to="/my-bookings">
+        My Bookings
+      </NavLink>
       <NavLink className="px-5" to="/about">
         About
+      </NavLink>
+      <NavLink className="px-5" to="/contact">
+        Contact
       </NavLink>
     </>
   );
@@ -44,18 +67,33 @@ const NavBar = () => {
               {links}
             </nav>
           </div>
-          <Link to={`/`} className="btn btn-ghost text-xl font-bold p-0">Template</Link>
+          <Link to={`/`} className="btn btn-ghost text-xl font-bold p-0">HotelHub</Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <nav className="menu menu-horizontal px-1">{links}</nav>
         </div>
-        <div className="navbar-end">
-          <Link
-            to={`/sign-in`}
-            className="btn btn-primary border-none bg-orange-500 text-white"
-          >
-            Sign In
-          </Link>
+        <div className="navbar-end gap-2">
+          <div>
+            {
+              user ?
+                <img src={user.photoURL} className="rounded-full w-12" />
+                :
+                ''
+            }
+          </div>
+          <div>
+            {
+              user ?
+                <button onClick={handleSignOut} className="btn btn-primary border-none bg-orange-500 text-white"> Sign Out</button>
+                :
+                <Link
+                  to={`/sign-in`}
+                  className="btn btn-primary border-none bg-orange-500 text-white"
+                >
+                  Sign In
+                </Link>
+            }
+          </div>
         </div>
       </div>
     </>

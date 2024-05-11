@@ -6,6 +6,9 @@ import About from "../Components/About/About";
 import SignIn from "../Components/SignIn/SignIn";
 import SignUp from "../Components/SignUp/SignUp";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
+import Rooms from "../Components/Rooms/Rooms";
+import MyBookings from "../Components/MyBookings/MyBookings";
+import Contact from "../Components/Contact/Contact";
 
 
 
@@ -20,8 +23,20 @@ const router = createBrowserRouter([
                 element: <Home></Home>,
             },
             {
+                path: "/rooms",
+                element: <Rooms></Rooms>,
+            },
+            {
+                path: "/my-bookings",
+                element: <MyBookings></MyBookings>,
+            },
+            {
                 path: "/about",
                 element: <About></About>,
+            },
+            {
+                path: "/contact",
+                element: <Contact></Contact>,
             },
             {
                 path: "/sign-in",

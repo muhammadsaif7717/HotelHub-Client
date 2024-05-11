@@ -1,4 +1,9 @@
 import { Helmet } from "react-helmet-async";
+import Slider from "../Slider/Slider";
+import UserReview from "../UserReview/UserReview";
+import Map from "../Map/Map";
+import Newsletter from "../Newsletter/Newsletter";
+import FeaturedRooms from "../FeaturedRooms/FeaturedRooms";
 
 const Home = () => {
     return (
@@ -8,7 +13,11 @@ const Home = () => {
             </Helmet>
 
             <div className="my-10">
-                <h1 className="text-center text-2xl font-bold">This Is Home</h1>
+                <Slider></Slider>
+                <FeaturedRooms></FeaturedRooms>
+                <Map></Map>
+                <Newsletter></Newsletter>
+                <UserReview></UserReview>
             </div>
         </>
     );
