@@ -83,7 +83,7 @@ const UserReview = () => {
 
   return (
     <Zoom>
-      <div className=" rounded-xl">
+      <div className=" rounded-xl ">
         <div className="hidden lg:block">
           <h1 className="text-center text-3xl font-bold mt-10 mb-5">
             Our Customers reviews

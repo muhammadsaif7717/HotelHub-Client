@@ -8,9 +8,10 @@ const Map = () => {
 
   return (
     <div>
-      <h2>Map</h2>
-      <div style={{ height: "400px" }}>
-        <MapContainer center={position} zoom={13} style={{ height: "100%", width: "100%" }}>
+      <h1 className="text-center mb-5 text-3xl font-bold ">Our Hotel{`'`}s Location</h1>
+       <div className=" rounded-xl overflow-hidden">
+      <div style={{ height: "400px" }} className="rounded-xl">
+        <MapContainer center={position} zoom={13} className="h-full w-full">
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
@@ -22,6 +23,7 @@ const Map = () => {
         </MapContainer>
       </div>
     </div>
+   </div>
   );
 };
 

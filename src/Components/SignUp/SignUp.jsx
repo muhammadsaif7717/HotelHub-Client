@@ -3,6 +3,8 @@ import { Helmet } from "react-helmet-async";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import axios from "axios";
+import Swal from "sweetalert2";
 // import signSideImg from "../../assets/images/login.svg";
 
 const SignUp = () => {
@@ -39,8 +41,28 @@ const SignUp = () => {
     createNewUser(email, password)
       .then(res => {
         console.log(res.user)
-        console.log('User created Successfully')
 
+        // post user to database
+        const user = {
+          displayName: name,
+          email: email,
+          photoURL: photo,
+        }
+        axios.post('http://localhost:5000/users', user)
+          .then(res => {
+            console.log(res.data)
+            if (res.data.acknowledged) {
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "User Created Successfully",
+                showConfirmButton: false,
+                timer: 1500
+              });
+            }
+          })
+
+        // update user profile
         updateUserProfile(name, photo)
           .then(() => {
             console.log('User Updated')
@@ -52,9 +74,17 @@ const SignUp = () => {
         //reset form
         form.reset()
       })
-      .catch(err => {
-        console.log(err.message)
-      })
+      .catch((err) => {
+        if (err.code === "auth/email-already-in-use") {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "User already exhist!",
+          });
+        }
+        //reset form
+        form.reset()
+      });
   };
 
   return (

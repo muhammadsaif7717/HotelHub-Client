@@ -1,0 +1,106 @@
+[
+    {
+        "title": "Luxury Suite",
+        "description": "Experience luxury like never before in our spacious suite. Our Luxury Suite offers breathtaking views of the city skyline and is elegantly designed with modern amenities to ensure a comfortable stay.",
+        "price": 300,
+        "currency": "USD",
+        "pricePerNight": 300,
+        "roomSize": "1000 sq ft",
+        "availability": {
+            "fromDate": "2024-06-01",
+            "toDate": "2024-06-07"
+        },
+        "images": [
+            "https://example.com/images/luxury_suite.jpg",
+            "https://example.com/images/luxury_suite_bedroom.jpg",
+            "https://example.com/images/luxury_suite_bathroom.jpg"
+        ],
+        "specialOffers": [
+            {
+                "title": "Spring Special",
+                "description": "Book now and get 20% off your stay during spring season!",
+                "validFrom": "2024-03-01",
+                "validTo": "2024-05-31"
+            }
+        ]
+    },
+    {
+        "title": "Deluxe Room",
+        "description": "Our Deluxe Room offers a perfect blend of comfort and style. With modern furnishings and amenities, it's an ideal choice for both business and leisure travelers.",
+        "price": 200,
+        "currency": "USD",
+        "pricePerNight": 200,
+        "roomSize": "700 sq ft",
+        "availability": {
+          "fromDate": "2024-06-15",
+          "toDate": "2024-06-21"
+        },
+        "images": [
+          "https://example.com/images/deluxe_room.jpg",
+          "https://example.com/images/deluxe_room_bedroom.jpg",
+          "https://example.com/images/deluxe_room_bathroom.jpg"
+        ],
+        "specialOffers": []
+      },
+      {
+        "title": "Standard Room",
+        "description": "Our Standard Room offers comfortable accommodation at an affordable price. Perfect for budget-conscious travelers looking for a cozy space to relax.",
+        "price": 150,
+        "currency": "USD",
+        "pricePerNight": 150,
+        "roomSize": "500 sq ft",
+        "availability": {
+          "fromDate": "2024-07-01",
+          "toDate": "2024-07-07"
+        },
+        "images": [
+          "https://example.com/images/standard_room.jpg",
+          "https://example.com/images/standard_room_bedroom.jpg",
+          "https://example.com/images/standard_room_bathroom.jpg"
+        ],
+        "specialOffers": []
+      },
+      {
+        "title": "Family Suite",
+        "description": "Our Family Suite is perfect for families or groups. With spacious rooms and separate living areas, it offers plenty of space for everyone to relax and unwind.",
+        "price": 400,
+        "currency": "USD",
+        "pricePerNight": 400,
+        "roomSize": "1200 sq ft",
+        "availability": {
+          "fromDate": "2024-06-10",
+          "toDate": "2024-06-17"
+        },
+        "images": [
+          "https://example.com/images/family_suite.jpg",
+          "https://example.com/images/family_suite_bedroom1.jpg",
+          "https://example.com/images/family_suite_bedroom2.jpg"
+        ],
+        "specialOffers": []
+      },
+      {
+        "title": "Executive Suite",
+        "description": "Our Executive Suite offers the ultimate in luxury and comfort. With premium amenities and personalized services, it's perfect for discerning travelers.",
+        "price": 500,
+        "currency": "USD",
+        "pricePerNight": 500,
+        "roomSize": "1500 sq ft",
+        "availability": {
+          "fromDate": "2024-06-20",
+          "toDate": "2024-06-27"
+        },
+        "images": [
+          "https://example.com/images/executive_suite.jpg",
+          "https://example.com/images/executive_suite_living_room.jpg",
+          "https://example.com/images/executive_suite_bedroom.jpg"
+        ],
+        "specialOffers": [
+          {
+            "title": "Summer Special",
+            "description": "Enjoy a luxurious stay this summer and get a complimentary spa treatment!",
+            "validFrom": "2024-06-01",
+            "validTo": "2024-08-31"
+          }
+        ]
+      }  
+]

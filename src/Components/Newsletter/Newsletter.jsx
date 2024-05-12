@@ -1,5 +1,5 @@
 import  { useState } from 'react';
-import newsletterImage from '../../assets/images/3.jpg';
+import newsletterImage from '../../assets/images/b3.jpg';
 
 const Newsletter = () => {
     const [email, setEmail] = useState('');
@@ -12,14 +12,14 @@ const Newsletter = () => {
     }
 
     return (
-        <div className=" flex items-center justify-center bg-gray-100">
-            <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden md:flex">
+  
+            <div className=" bg-white shadow-xl rounded-lg lg:flex gap-10 space-y-5 p-10 items-center justify-center border">
                 {/* Image Section */}
-                <div className="md:flex-shrink-0">
-                    <img className="h-56 w-full object-cover md:w-56" src={newsletterImage} alt="Newsletter" />
+                <div className='lg:w-1/2 mx-auto '>
+                    <img className=" object-cover rounded-xl " src={newsletterImage} alt="Newsletter" />
                 </div>
                 {/* Form Section */}
-                <div className="p-8 md:p-6">
+                <div className='lg:w-1/2 mx-auto'>
                     <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Sign up for our newsletter</h2>
                     <form className="space-y-6" onSubmit={handleSubmit}>
                         <input type="hidden" name="remember" value="true" />
@@ -53,7 +53,7 @@ const Newsletter = () => {
                     </form>
                 </div>
             </div>
-        </div>
+
     );
 };
 

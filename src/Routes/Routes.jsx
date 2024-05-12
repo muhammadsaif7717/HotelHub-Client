@@ -9,6 +9,7 @@ import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import Rooms from "../Components/Rooms/Rooms";
 import MyBookings from "../Components/MyBookings/MyBookings";
 import Contact from "../Components/Contact/Contact";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/my-bookings",
-                element: <MyBookings></MyBookings>,
+                element: <PrivateRoute><MyBookings></MyBookings></PrivateRoute>,
             },
             {
                 path: "/about",

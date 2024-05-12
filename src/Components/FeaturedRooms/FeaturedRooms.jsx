@@ -1,26 +1,16 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 
 const FeaturedRooms = () => {
-    const rooms = [
-        {
-            id: 1,
-            name: 'Luxury Suite',
-            description: 'Spacious suite with breathtaking views',
-            image: 'https://via.placeholder.com/300',
-        },
-        {
-            id: 2,
-            name: 'Ocean View Room',
-            description: 'Wake up to the sound of waves crashing',
-            image: 'https://via.placeholder.com/300',
-        },
-        {
-            id: 3,
-            name: 'Cozy Cabin',
-            description: 'Perfect retreat for a romantic getaway',
-            image: 'https://via.placeholder.com/300',
-        },
-    ];
+    const [rooms, setRooms] = useState([])
+
+    useEffect(() => {
+        axios.get('http://localhost:5000/rooms')
+            .then(res => {
+                setRooms(res.data)
+            })
+    }, [])
 
     return (
         <div className="container mx-auto py-12">

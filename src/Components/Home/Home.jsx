@@ -12,12 +12,12 @@ const Home = () => {
                 <title>Template | Home</title>
             </Helmet>
 
-            <div className="my-10">
+            <div className="mt-5 mb-10">
                 <Slider></Slider>
-                <FeaturedRooms></FeaturedRooms>
-                <Map></Map>
-                <Newsletter></Newsletter>
-                <UserReview></UserReview>
+                <div className="my-[100px]"><FeaturedRooms></FeaturedRooms></div>
+                <div className="my-[100px]"><Newsletter></Newsletter></div>
+                <div className="my-[100px]"><UserReview></UserReview></div>
+                <div className="my-[100px]"><Map></Map></div>
             </div>
         </>
     );
