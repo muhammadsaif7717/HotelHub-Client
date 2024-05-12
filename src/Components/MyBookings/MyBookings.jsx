@@ -2,7 +2,9 @@
 const MyBookings = () => {
     return (
         <div>
-            <h2>My Bookings</h2>
+            <div>
+            <h2 className="font-bold text-3xl text-center mt-10">My Bookings</h2>
+        </div>
         </div>
     );
 };

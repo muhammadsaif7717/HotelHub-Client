@@ -1,16 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const FeaturedRooms = () => {
-    const [rooms, setRooms] = useState([])
-
+    const [rooms,setRooms]=useState([])
+   
     useEffect(() => {
         axios.get('http://localhost:5000/rooms')
             .then(res => {
-                setRooms(res.data)
-            })
-    }, [])
+            setRooms(res.data)
+            
+        })
+    },[])
 
     return (
         <div className="container mx-auto py-12">
@@ -22,9 +24,9 @@ const FeaturedRooms = () => {
                         <div className="p-6">
                             <h3 className="text-xl font-semibold mb-2">{room.name}</h3>
                             <p className="text-gray-600 mb-4">{room.description}</p>
-                            <button className="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600">
-                                Book Now
-                            </button>
+                            <Link to={`/details/${room._id}`} className="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600">
+                                View Details
+                            </Link>
                         </div>
                     </div>
                 ))}

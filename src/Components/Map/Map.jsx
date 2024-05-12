@@ -4,14 +4,14 @@ import "leaflet/dist/leaflet.css";
 
 const Map = () => {
   // Coordinates of the location you want to show on the map
-  const position = [51.505, -0.09]; // Latitude, Longitude
+  const position = [23.8103, 90.4125]; // Latitude, Longitude
 
   return (
     <div>
       <h1 className="text-center mb-5 text-3xl font-bold ">Our Hotel{`'`}s Location</h1>
        <div className=" rounded-xl overflow-hidden">
       <div style={{ height: "400px" }} className="rounded-xl">
-        <MapContainer center={position} zoom={13} className="h-full w-full">
+        <MapContainer center={position} zoom={11} className="h-full w-full">
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
