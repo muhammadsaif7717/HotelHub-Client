@@ -13,7 +13,9 @@ const BookNow = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [modalVisible, setModalVisible] = useState(false);
     const [roomSummary, setRoomSummary] = useState(null);
-    const today = new Date().toLocaleDateString('en-GB');
+
+    // Get today's date in dd-mm-yyyy format
+    const today = new Date().toLocaleDateString('en-GB').split('/').reverse().join('-');
 
     useEffect(() => {
         // Fetch rooms
@@ -38,6 +40,7 @@ const BookNow = () => {
             name,
             email,
             selectedRoom: roomForBook,
+            bookedFromDate: today // Add bookedFromDate to the newBooking object
         };
 
         // Store room summary
@@ -51,7 +54,7 @@ const BookNow = () => {
             // updates
             const updatedRoom = {
                 availability: "No",
-                bookedDate: roomSummary.bookedFromDate,
+                bookedDate: today // Update bookedDate to today's date
             };
 
             // Post to database
@@ -117,7 +120,7 @@ const BookNow = () => {
                                 selected={selectedDate}
                                 onChange={(date) => setSelectedDate(date)}
                                 dateFormat="dd/MM/yyyy"
-                                defaultValue={today}
+                                defaultValue={today} // Set the default value to today's date
                                 minDate={new Date()}
                                 isClearable
                                 placeholderText="Select Your Date"
