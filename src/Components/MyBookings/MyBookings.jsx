@@ -67,10 +67,21 @@ const MyBookings = () => {
             axios.patch(`http://localhost:5000/bookings/${selectedBooking._id}`, updatedBooking)
                 .then(res => {
                     console.log(res.data);
+                    // Update myBookings with the new date
+                    setMyBookings(prevBookings =>
+                        prevBookings.map(booking =>
+                            booking._id === selectedBooking._id ? { ...booking, bookedDate: newDate } : booking
+                        )
+                    );
                     // Close the modal and reset states
                     setModalVisible(false);
                     setSelectedBooking(null);
                     setNewDate(null);
+                    Swal.fire({
+                        icon: "success",
+                        title: "Date Updated!",
+                        text: "Your booking date has been updated successfully."
+                    });
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -81,6 +92,17 @@ const MyBookings = () => {
                     });
                 });
         }
+    };
+
+    const today = new Date().toISOString().split('T')[0]; // Get today's date
+
+    // Function to format date as dd-mm-yyyy
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+        return `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
     };
 
     return (
@@ -98,11 +120,14 @@ const MyBookings = () => {
                             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">$ {booking.selectedRoom.pricePerNight}</span>
                             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Size: {booking.selectedRoom.roomSize}</span>
                         </div>
+                        <div className="">
+                            <h1>Booked Date: {formatDate(booking.bookedDate)}</h1> {/* Format date */}
+                        </div>
                         <div className="flex gap-5 items-center justify-start">
                             <button onClick={() => handleCancelBooking(booking._id, booking.selectedRoom._id)} className="btn btn-error text-white border-none">Cancel</button>
                             <button onClick={() => {
                                 setSelectedBooking(booking);
-                                setNewDate(booking.bookedDate); // Set default value to the currently selected booking date
+                                setNewDate(formatDate(booking.bookedDate)); // Set default value to the currently selected booking date
                                 setModalVisible(true);
                             }} className="btn btn-success  text-white bg-blue-400 border-none">Update Date</button>
                         </div>
@@ -118,6 +143,7 @@ const MyBookings = () => {
                         <input
                             type="date"
                             value={newDate}
+                            min={today} // Set the minimum selectable date to today
                             onChange={(e) => setNewDate(e.target.value)}
                             className="input input-bordered mb-4"
                         />
