@@ -40,7 +40,7 @@ const BookNow = () => {
             name,
             email,
             selectedRoom: roomForBook,
-            bookedFromDate: today // Add bookedFromDate to the newBooking object
+            bookedDate: today // Add bookedFromDate to the newBooking object
         };
 
         // Store room summary
@@ -164,7 +164,7 @@ const BookNow = () => {
                         <h3 className="text-lg font-semibold mb-4">Room Summary</h3>
                         <p>Name: {roomSummary?.name}</p>
                         <p>Email: {roomSummary?.email}</p>
-                        <p>Booked From: {roomSummary?.bookedFromDate}</p>
+                        <p>Booked From: {roomSummary?.bookedDate}</p>
                         <p>Room: {roomSummary?.selectedRoom?.title}</p>
                         <div className="flex justify-end mt-4">
                             <button onClick={() => setModalVisible(false)} className="bg-gray-300 px-4 py-2 rounded-md mr-4">Close</button>
