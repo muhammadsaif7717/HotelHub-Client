@@ -26,9 +26,9 @@ const Rooms = () => {
         if (!rooms.length) return;
         let sorted = [...rooms];
         if (sortOrder === "asc") {
-            sorted.sort((a, b) => a.price - b.price);
+            sorted.sort((a, b) => a.pricePerNight - b.pricePerNight);
         } else if (sortOrder === "desc") {
-            sorted.sort((a, b) => b.price - a.price);
+            sorted.sort((a, b) => b.pricePerNight - a.pricePerNight);
         }
         setSortedRooms(sorted);
     };

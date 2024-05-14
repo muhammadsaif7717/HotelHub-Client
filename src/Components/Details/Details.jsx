@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 
 const Details = () => {
     const { id } = useParams();
@@ -9,33 +9,29 @@ const Details = () => {
     return (
         <div className="container mx-auto px-4 py-8">
             <h2 className="font-bold text-3xl text-center mt-10">Details of: {clickedRoom.title} </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-                <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="mt-14">
+                <div className="bg-white rounded-lg shadow-md overflow-hidden flex">
                     <img src={clickedRoom.images[0]} alt={clickedRoom.title} className="w-full h-64 object-cover" />
                     <div className="p-6">
                         <h3 className="text-xl font-semibold mb-2">{clickedRoom.title}</h3>
                         <p className="text-gray-600 mb-4">{clickedRoom.description}</p>
                         <div className="flex items-center justify-between">
-                            <p className="text-lg font-semibold">${clickedRoom.price} per night</p>
+                            <p className="text-lg font-semibold">${clickedRoom.pricePerNight} per night</p>
                             <p className="text-lg">{clickedRoom.roomSize}</p>
                         </div>
                         <div className="flex items-center justify-between mt-4">
-                            <p className="text-gray-600">Availability:</p>
-                            <p className="text-lg">{clickedRoom.availability.fromDate} - {clickedRoom.availability.toDate}</p>
+                            <p className="text-gray-600">Availability: { clickedRoom.availability}</p>
                         </div>
                         {clickedRoom.specialOffers.length > 0 && (
                             <div className="mt-4">
-                                <h4 className="text-lg font-semibold mb-2">Special Offers:</h4>
-                                <ul>
-                                    {clickedRoom.specialOffers.map((offer, index) => (
-                                        <li key={index} className="text-gray-600">{offer.title}: {offer.description}</li>
-                                    ))}
-                                </ul>
+                                <h4 className="text-lg font-semibold mb-2">Special Offers: { clickedRoom.specialOffers}</h4>
                             </div>
                         )}
-                    </div>
-                    <div>
-                        <button className="btn  btn-primary">Book Now</button>
+                        <div>
+                            <Link to={`/book-now/${clickedRoom._id}`} className="btn mt-5 btn-primary">
+                                Book Now
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>

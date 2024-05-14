@@ -11,6 +11,7 @@ import MyBookings from "../Components/MyBookings/MyBookings";
 import Contact from "../Components/Contact/Contact";
 import PrivateRoute from "./PrivateRoute";
 import Details from "../Components/Details/Details";
+import BookNow from "../Components/BookNow/BookNow";
 
 
 
@@ -34,8 +35,14 @@ const router = createBrowserRouter([
                 loader: ()=> fetch('http://localhost:5000/rooms')
             },
             {
+                path: "/book-now/:id",
+                element: <PrivateRoute><BookNow></BookNow></PrivateRoute>,
+                loader: ()=> fetch(`http://localhost:5000/rooms`)
+            },
+            {
                 path: "/my-bookings",
                 element: <PrivateRoute><MyBookings></MyBookings></PrivateRoute>,
+                loader: ()=> fetch(`http://localhost:5000/bookings`)
             },
             {
                 path: "/about",
