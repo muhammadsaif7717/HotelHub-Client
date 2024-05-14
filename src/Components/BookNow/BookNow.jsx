@@ -12,7 +12,7 @@ const BookNow = () => {
     const { id } = useParams();
     const rooms = useLoaderData();
     const roomForBook = rooms.find((room) => room._id === id);
-    console.log(roomForBook._id)
+    console.log(roomForBook.availability)
     const [selectedDate, setSelectedDate] = useState(null);
     const [modalVisible, setModalVisible] = useState(false);
     const [roomSummary, setRoomSummary] = useState(null);
@@ -36,7 +36,8 @@ const BookNow = () => {
     };
 
     const handleConfirmBooking = () => {
-        // updates
+        if (roomForBook.availability == "Yes") {
+             // updates
         const updatedRoom = {
             availability: "No",
             bookedDate: roomSummary.bookedFromDate,
@@ -74,6 +75,14 @@ const BookNow = () => {
             .then(res => {
                 console.log(res.data)
             })
+        }
+        else {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Room Is Not Available",
+            });
+        }
     };
 
     return (
@@ -81,6 +90,11 @@ const BookNow = () => {
             <h2 className="text-3xl font-semibold mb-8 text-center">Book Now: {roomForBook.title}</h2>
 
             <div className="space-y-7">
+                <h2 className="text-xl font-bold text-center">
+                    {
+                        roomForBook.availability == "Yes" ? "Available" : "Unavailable"
+                    }
+                </h2>
                 <form onSubmit={handleBooking} className="w-full">
                     <div className="flex flex-col md:flex-row  justify-center items-center gap-5 ">
                         <div className="flex flex-col w-96">
