@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import DarkMode from "../DarkMode/DarkMode";
 
 const NavBar = () => {
   const { user, signOutUser } = useContext(AuthContext)
@@ -73,6 +74,9 @@ const NavBar = () => {
           <nav className="menu menu-horizontal px-1">{links}</nav>
         </div>
         <div className="navbar-end gap-2">
+          <div className="pt-4">
+            <DarkMode></DarkMode>
+          </div>
           <div>
             {
               user ?

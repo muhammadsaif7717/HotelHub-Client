@@ -29,8 +29,11 @@ const FeaturedRooms = () => {
                         <div className="p-6">
                             <h3 className="text-xl font-semibold mb-2">{room.name}</h3>
                             <p className="text-gray-600 mb-4">{room.description}</p>
-                            <Link to={`/details/${room._id}`} className="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600">
+                            {/* <Link to={`/details/${room._id}`} className="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600">
                                 View Details
+                            </Link> */}
+                            <Link to={`/book-now/${room._id}`} className="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600">
+                                Book Now
                             </Link>
                         </div>
                     </div>

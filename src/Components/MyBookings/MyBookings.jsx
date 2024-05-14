@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Contexts/AuthProvider";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -129,7 +129,8 @@ const MyBookings = () => {
                                 setSelectedBooking(booking);
                                 setNewDate(formatDate(booking.bookedDate)); // Set default value to the currently selected booking date
                                 setModalVisible(true);
-                            }} className="btn btn-success  text-white bg-blue-400 border-none">Update Date</button>
+                            }} className="btn btn-success  text-white bg-blue-500 border-none">Update Date</button>
+                            <Link to={`/post-rewiew/${booking.selectedRoom._id}`} className="btn btn-success  text-white bg-blue-400 border-none">Review</Link>
                         </div>
                     </div>
                 ))}
