@@ -1,17 +1,19 @@
-import { useContext, useState } from "react";
+import {  useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaEyeSlash, FaGoogle, FaRegEye } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../Contexts/AuthProvider";
+// import { AuthContext } from "../../Contexts/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
 // import signSideImg from "../../assets/images/login.svg";
 
 const SignIn = () => {
   const navigate = useNavigate();
   const location = useLocation()
   const [showPassword, setShowPassword] = useState(false);
-  const { signInWithEmailAndPass, googleSignIn } = useContext(AuthContext)
+  // const { signInWithEmailAndPass, googleSignIn } = useContext(AuthContext)
+  const { signInWithEmailAndPass, googleSignIn } = useAuth();
 
   const handleFormSubmit = (e) => {
     e.preventDefault();

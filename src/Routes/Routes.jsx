@@ -33,22 +33,24 @@ const router = createBrowserRouter([
             {
                 path: "/details/:id",
                 element: <PrivateRoute><Details></Details></PrivateRoute>,
-                loader: ()=> fetch('http://localhost:5000/rooms')
+                loader: () => fetch('http://localhost:5000/rooms')
             },
             {
                 path: "/book-now/:id",
                 element: <PrivateRoute><BookNow></BookNow></PrivateRoute>,
-                loader: ()=> fetch(`http://localhost:5000/rooms`)
+                loader: () => fetch(`http://localhost:5000/rooms`)
             },
             {
                 path: "/my-bookings",
                 element: <PrivateRoute><MyBookings></MyBookings></PrivateRoute>,
-                loader: ()=> fetch(`http://localhost:5000/bookings`)
+                // loader: () => fetch(`http://localhost:5000/bookings`, {
+                //     credentials: 'include'
+                // })
             },
             {
                 path: "/post-review/:id",
                 element: <PrivateRoute><PostReview></PostReview></PrivateRoute>,
-                loader: ()=> fetch(`http://localhost:5000/rooms`)
+                loader: () => fetch(`http://localhost:5000/rooms`)
             },
             {
                 path: "/about",

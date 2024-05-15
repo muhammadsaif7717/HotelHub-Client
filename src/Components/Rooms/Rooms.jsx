@@ -1,22 +1,23 @@
-import axios from "axios";
+// import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useRooms from "../../Hooks/useRooms";
 
 
 const Rooms = () => {
-
-    const [rooms, setRooms] = useState([]);
+    const rooms = useRooms();
+    // const [rooms, setRooms] = useState([]);
     const [sortedRooms, setSortedRooms] = useState([]);
     const [sortOrder, setSortOrder] = useState("default");
 
     console.log(rooms)
 
-    useEffect(() => {
-        axios.get('http://localhost:5000/rooms')
-            .then(res => {
-                setRooms(res.data);
-            })
-    }, []);
+    // useEffect(() => {
+    //     axios.get('http://localhost:5000/rooms')
+    //         .then(res => {
+    //             setRooms(res.data);
+    //         })
+    // }, []);
 
     useEffect(() => {
         sortRooms();

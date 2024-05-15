@@ -1,16 +1,26 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Contexts/AuthProvider";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const MyBookings = () => {
-    const bookings = useLoaderData();
+    const [bookings, setBookings] = useState([])
+    const axiousSecure = useAxiosSecure()
     const { user } = useContext(AuthContext);
     const [myBookings, setMyBookings] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
     const [selectedBooking, setSelectedBooking] = useState(null);
     const [newDate, setNewDate] = useState(null);
+
+
+    useEffect(() => {
+        axiousSecure.get(`/bookings?email=${user?.email}`, { withCredentials: true })
+            .then(res => {
+                setBookings(res.data)
+            })
+    }, [axiousSecure, user?.email])
 
     useEffect(() => {
         const filteredBookings = bookings.filter(
@@ -19,7 +29,21 @@ const MyBookings = () => {
         setMyBookings(filteredBookings);
     }, [bookings, user.email]);
 
-    const handleCancelBooking = (id, deletingId) => {
+    const handleCancelBooking = (id, deletingId, bookedDate) => {
+        const bookingDate = new Date(bookedDate);
+        const currentDate = new Date();
+        const differenceInTime = bookingDate.getTime() - currentDate.getTime();
+        const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+
+        if (differenceInDays <= 1) {
+            Swal.fire({
+                title: "Cannot Cancel Booking",
+                text: "You Cannot cancel this booking before 1 day of the booking date.",
+                icon: "error"
+            });
+            return;
+        }
+
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -40,7 +64,7 @@ const MyBookings = () => {
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
-                            
+
                             setMyBookings(prevBookings => prevBookings.filter(booking => booking._id !== id));
                         }
                     });
@@ -58,6 +82,10 @@ const MyBookings = () => {
             }
         });
     };
+
+
+
+
 
     const handleUpdateDate = () => {
         if (newDate && selectedBooking) {
@@ -124,7 +152,7 @@ const MyBookings = () => {
                             <h1>Booked Date: {formatDate(booking.bookedDate)}</h1> {/* Format date */}
                         </div>
                         <div className="flex gap-5 items-center justify-start">
-                            <button onClick={() => handleCancelBooking(booking._id, booking.selectedRoom._id)} className="btn btn-error text-white border-none">Cancel</button>
+                            <button onClick={() => handleCancelBooking(booking._id, booking.selectedRoom._id, booking.bookedDate)} className="btn btn-error text-white border-none">Cancel</button>
                             <button onClick={() => {
                                 setSelectedBooking(booking);
                                 setNewDate(formatDate(booking.bookedDate)); // Set default value to the currently selected booking date
