@@ -63,7 +63,7 @@ const NavBar = () => {
             </div>
             <nav
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 z-50"
             >
               {links}
             </nav>
@@ -88,11 +88,11 @@ const NavBar = () => {
           <div>
             {
               user ?
-                <button onClick={handleSignOut} className="btn btn-primary border-none bg-orange-500 text-white"> Sign Out</button>
+                <button onClick={handleSignOut} className="btn btn-primary border-none bg-orange-500 text-white px-0 w-[76px]"> Sign Out</button>
                 :
                 <Link
                   to={`/sign-in`}
-                  className="btn btn-primary border-none bg-orange-500 text-white"
+                  className="btn btn-primary border-none bg-orange-500 text-white px-0 w-[76px]"
                 >
                   Sign In
                 </Link>

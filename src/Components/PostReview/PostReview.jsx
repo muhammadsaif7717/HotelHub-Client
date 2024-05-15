@@ -59,53 +59,55 @@ const PostReview = () => {
 
 
     return (
-        <div className="my-14">
-            <Helmet>
-                <title>HotelHub | Post Review</title>
-            </Helmet>
-            <h2 className="font-bold text-center text-3xl mb-7">Post a Review: {clickedbooking.title}</h2>
+        <div className="mb-14 mt-10 bg-gray-200 min-h-[85vh] rounded-xl flex items-center justify-center">
+            <div>
+                <Helmet>
+                    <title>HotelHub | Post Review</title>
+                </Helmet>
+                <h2 className="font-bold text-center text-3xl mb-7">Post a Review: {clickedbooking.title}</h2>
 
-            <form onSubmit={handlePostReview} className="w-96 mx-auto space-y-4">
-                <div className="flex flex-col ">
-                    <label className="font-semibold">User Name</label>
-                    <input
-                        type="text"
-                        name="userName"
-                        defaultValue={user.displayName}
-                        className="input input-bordered"
-                        readOnly />
-                </div>
-                <div className="flex flex-col ">
-                    <label className="font-semibold">Rating</label>
+                <form onSubmit={handlePostReview} className="w-96 mx-auto space-y-4">
+                    <div className="flex flex-col ">
+                        <label className="font-semibold">User Name</label>
+                        <input
+                            type="text"
+                            name="userName"
+                            defaultValue={user.displayName}
+                            className="input input-bordered"
+                            readOnly />
+                    </div>
+                    <div className="flex flex-col ">
+                        <label className="font-semibold">Rating</label>
 
-                    <select name="rating" className="border-2 border-gray-300 rounded-lg p-3" required>
-                        <option value="">Select Rating</option> {/* Added an empty value */}
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
+                        <select name="rating" className="border-2 border-gray-300 rounded-lg p-3" required>
+                            <option value="">Select Rating</option> {/* Added an empty value */}
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
 
-                </div>
-                <div className="flex flex-col ">
-                    <label className="font-semibold">Timestamp</label>
-                    <input
-                        name="timestamp"
-                        defaultValue={new Date().toISOString()}
-                        className="input input-bordered"
-                        readOnly />
-                </div>
-                <div className="flex flex-col ">
-                    <label className="font-semibold">Comment</label>
-                    <textarea
-                        name="comment"
-                        placeholder="Comment"
-                        className="input input-bordered h-24"
-                        required></textarea>
-                </div>
-                <button type="submit" className="btn w-full bg-blue-500 text-white px-4 py-2 rounded-md mt-4">Submit Review</button>
-            </form>
+                    </div>
+                    <div className="flex flex-col ">
+                        <label className="font-semibold">Timestamp</label>
+                        <input
+                            name="timestamp"
+                            defaultValue={new Date().toISOString()}
+                            className="input input-bordered"
+                            readOnly />
+                    </div>
+                    <div className="flex flex-col ">
+                        <label className="font-semibold">Comment</label>
+                        <textarea
+                            name="comment"
+                            placeholder="Comment"
+                            className="input input-bordered h-24"
+                            required></textarea>
+                    </div>
+                    <button type="submit" className="btn w-full bg-blue-500 text-white px-4 py-2 rounded-md mt-4">Submit Review</button>
+                </form>
+            </div>
         </div>
     );
 };

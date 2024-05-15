@@ -2,6 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Contexts/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
+import { FaPen } from "react-icons/fa";
+import { MdRateReview } from "react-icons/md";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
@@ -148,29 +152,41 @@ const MyBookings = () => {
                 <title>HotelHub | My Bookings</title>
             </Helmet>
             <h2 className="font-bold text-3xl text-center mb-5">My Bookings: {myBookings.length}</h2>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center justify-center">
                 {myBookings.map(booking => (
                     <div key={booking._id} className="bg-white shadow-lg w-full h-full rounded-lg overflow-hidden p-5 space-y-4">
-                        <img src={booking.selectedRoom.images[0]} alt={booking.selectedRoom.title} className="w-full object-cover" />
+                        <img src={booking.selectedRoom.images[0]} alt={booking.selectedRoom.title} className="w-full h-44 rounded-lg object-cover" />
                         <div className="">
                             <div className="font-bold text-xl mb-4">{booking.selectedRoom.title}</div>
-                            <p className="text-gray-700 text-base">{booking.selectedRoom.description}</p>
+                            <p className="text-gray-700 text-base">{booking.selectedRoom.description.slice(0,85)}.</p>
                         </div>
                         <div className="">
                             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">$ {booking.selectedRoom.pricePerNight}</span>
                             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Size: {booking.selectedRoom.roomSize}</span>
                         </div>
                         <div className="">
-                            <h1>Booked Date: {formatDate(booking.bookedDate)}</h1> {/* Format date */}
+                            <h1><b>Booked Date:</b> {formatDate(booking.bookedDate)}</h1> {/* Format date */}
                         </div>
                         <div className="flex gap-5 items-center justify-start">
-                            <button onClick={() => handleCancelBooking(booking._id, booking.selectedRoom._id, booking.bookedDate)} className="btn btn-error text-white border-none">Cancel</button>
+                            <button onClick={() => handleCancelBooking(booking._id, booking.selectedRoom._id, booking.bookedDate)} className="btn btn-error text-white border-none text-2xl"
+                                 data-tooltip-id="my-tooltip"
+                                 data-tooltip-content="Delete"
+                                 data-tooltip-place="bottom"
+                            >X</button>
                             <button onClick={() => {
                                 setSelectedBooking(booking);
                                 setNewDate(formatDate(booking.bookedDate)); // Set default value to the currently selected booking date
                                 setModalVisible(true);
-                            }} className="btn btn-success  text-white bg-blue-500 border-none">Update Date</button>
-                            <Link to={`/post-review/${booking.selectedRoom._id}`} className="btn btn-success  text-white bg-blue-400 border-none">Review</Link>
+                            }} className="btn btn-success  text-white bg-blue-500 border-none text-xl"
+                            data-tooltip-id="my-tooltip"
+                                 data-tooltip-content="Update Date"
+                                 data-tooltip-place="bottom"
+                            ><FaPen></FaPen></button>
+                            <Link to={`/post-review/${booking.selectedRoom._id}`} className="btn btn-success text-2xl text-white bg-blue-400 border-none"
+                            data-tooltip-id="my-tooltip"
+                            data-tooltip-content="Post Review"
+                            data-tooltip-place="bottom"
+                            ><MdRateReview /></Link>
                         </div>
                     </div>
                 ))}
@@ -195,6 +211,7 @@ const MyBookings = () => {
                     </div>
                 </div>
             )}
+            <Tooltip id="my-tooltip" />
         </div>
     );
 };

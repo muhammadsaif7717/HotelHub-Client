@@ -107,7 +107,8 @@ const BookNow = () => {
     };
 
     return (
-        <div className="p-10 bg-gray-300 mt-14 rounded-xl min-h-[82vh] ">
+        <div className="p-10 bg-gray-300 mt-14 rounded-xl min-h-[82vh] flex items-center justify-center">
+            <div>
             <Helmet>
                 <title>HotelHhub | Book Now</title>
             </Helmet>
@@ -118,8 +119,8 @@ const BookNow = () => {
                     {roomForBook?.availability == "Yes" ? "Available" : "Unavailable"}
                 </h2>
                 <form onSubmit={handleBooking} className="w-full">
-                    <div className="flex flex-col md:flex-row  justify-center items-center gap-5 ">
-                        <div className="flex flex-col w-96">
+                    <div className="flex flex-col items-center gap-5 justify-center">
+                    <div className="flex flex-col w-96">
                             <DatePicker
                                 selected={selectedDate}
                                 onChange={(date) => setSelectedDate(date)}
@@ -128,14 +129,11 @@ const BookNow = () => {
                                 minDate={new Date()}
                                 isClearable
                                 placeholderText="Select Your Date"
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-96"
                                 showTimeSelect={false}
                                 required
                             />
                         </div>
-                    </div>
-
-                    <div className="flex flex-col md:flex-row items-center gap-5 justify-center">
                         <input
                             type="text"
                             defaultValue={user.displayName}
@@ -177,6 +175,7 @@ const BookNow = () => {
                     </div>
                 </div>
             )}
+           </div>
         </div>
     );
 };
