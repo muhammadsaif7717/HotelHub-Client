@@ -25,7 +25,7 @@ const FeaturedRooms = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {top3Rooms.map(room => (
                     <div key={room.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-                        <img src={room.image} alt={room.name} className="w-full h-64 object-cover" />
+                        <img src={room.images[0]} alt={room.name} className="w-full h-64 object-cover" />
                         <div className="p-6">
                             <h3 className="text-xl font-semibold mb-2">{room.name}</h3>
                             <p className="text-gray-600 mb-4">{room.description}</p>

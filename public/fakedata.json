@@ -8,11 +8,15 @@
     "bookedDate": "",
     "reviews": [],
     "images": [
-      "https://example.com/images/luxury_suite.jpg",
-      "https://example.com/images/luxury_suite_bedroom.jpg",
-      "https://example.com/images/luxury_suite_bathroom.jpg"
+      "https://i.postimg.cc/bNbqnDMR/2150895587-1.jpg",
+      "https://i.postimg.cc/Jz5m6wRD/1791.jpg",
+      "https://i.postimg.cc/G2HCmHGG/2000.jpg"
     ],
-    "specialOffers": "Not Available"
+    "specialOffers": {
+      "offerPrice": 100,
+      "offerTitle": "Special Summer Offer!",
+      "offerDescription": "Book now and get a special discounted rate for your stay during summer."
+    }
   },
   {
     "title": "Deluxe Room",
@@ -23,11 +27,15 @@
     "bookedDate": "",
     "reviews": [],
     "images": [
-      "https://example.com/images/deluxe_room.jpg",
-      "https://example.com/images/deluxe_room_bedroom.jpg",
-      "https://example.com/images/deluxe_room_bathroom.jpg"
+      "https://i.postimg.cc/t493HxpJ/2150895578.jpg",
+      "https://i.postimg.cc/Rhz3Qk0h/2150895589.jpg",
+      "https://i.postimg.cc/N03LB3mD/2150895575.jpg"
     ],
-    "specialOffers": "Not Available"
+    "specialOffers": {
+      "offerPrice": 150,
+      "offerTitle": "Limited Time Offer!",
+      "offerDescription": "Book now and get a special discounted rate for a limited time only."
+    }
   },
   {
     "title": "Executive Suite",
@@ -38,11 +46,15 @@
     "bookedDate": "",
     "reviews": [],
     "images": [
-      "https://example.com/images/executive_suite.jpg",
-      "https://example.com/images/executive_suite_living_room.jpg",
-      "https://example.com/images/executive_suite_bedroom.jpg"
+      "https://i.postimg.cc/jSCjNxhv/2301.jpg",
+      "https://i.postimg.cc/ydh6BkV6/12375.jpg",
+      "https://i.postimg.cc/t493HxpJ/2150895578.jpg"
     ],
-    "specialOffers": "Not Available"
+    "specialOffers": {
+      "offerPrice": 400,
+      "offerTitle": "Summer Special Discount!",
+      "offerDescription": "Book now and enjoy our exclusive summer discount on Executive Suite bookings."
+    }
   },
   {
     "title": "Family Suite",
@@ -53,11 +65,15 @@
     "bookedDate": "",
     "reviews": [],
     "images": [
-      "https://example.com/images/family_suite.jpg",
-      "https://example.com/images/family_suite_bedroom1.jpg",
-      "https://example.com/images/family_suite_bedroom2.jpg"
+      "https://i.postimg.cc/DzKth5ms/6282.jpg",
+      "https://i.postimg.cc/nzW2FcT5/2149871181.jpg",
+      "https://i.postimg.cc/kMQrj04C/2148285503.jpg"
     ],
-    "specialOffers": "Not Available"
+    "specialOffers": {
+      "offerPrice": 300,
+      "offerTitle": "Special Family Offer!",
+      "offerDescription": "Book now and get a special discounted rate for Family Suite bookings, perfect for your family getaway!"
+    }
   },
   {
     "title": "Standard Room",
@@ -68,11 +84,15 @@
     "bookedDate": "",
     "reviews": [],
     "images": [
-      "https://example.com/images/standard_room.jpg",
-      "https://example.com/images/standard_room_bedroom.jpg",
-      "https://example.com/images/standard_room_bathroom.jpg"
+      "https://i.postimg.cc/8c668kCm/3034.jpg",
+      "https://i.postimg.cc/t7GV90ZQ/17926.jpg",
+      "https://i.postimg.cc/WpCCcs8F/12078.jpg"
     ],
-    "specialOffers": "Not Available"
+    "specialOffers": {
+      "offerPrice": 120,
+      "offerTitle": "Early Bird Special!",
+      "offerDescription": "Book now and take advantage of our Early Bird Special for the Standard Room. Limited availability!"
+    }
   },
   {
     "title": "Penthouse Suite",
@@ -83,10 +103,14 @@
     "bookedDate": "",
     "reviews": [],
     "images": [
-      "https://example.com/images/penthouse_suite.jpg",
-      "https://example.com/images/penthouse_suite_living_room.jpg",
-      "https://example.com/images/penthouse_suite_bedroom.jpg"
+      "https://i.postimg.cc/W16HZgvg/12374.jpg",
+      "https://i.postimg.cc/s2TH6z12/1800.jpg",
+      "https://i.postimg.cc/vTVPZ6h1/2259.jpg"
     ],
-    "specialOffers": "Not Available"
+    "specialOffers": {
+      "offerPrice": 650,
+      "offerTitle": "Exclusive Penthouse Offer!",
+      "offerDescription": "Book now and enjoy our exclusive offer for the Penthouse Suite. Experience luxury at a special discounted rate!"
+    }
   }
 ]

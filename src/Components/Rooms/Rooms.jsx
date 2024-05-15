@@ -56,7 +56,7 @@ const Rooms = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {sortedRooms.map(room => (
                     <Link to={`/details/${room._id}`} key={room.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-                        <img src={room.image} alt={room.name} className="w-full h-64 object-cover" />
+                        <img src={room.images[0]} alt={room.name} className="w-full h-64 object-cover" />
                         <h1>{ room.title}</h1>
                     </Link>
                 ))}
