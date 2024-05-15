@@ -1,19 +1,37 @@
-import {  useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaEyeSlash, FaGoogle, FaRegEye } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-// import { AuthContext } from "../../Contexts/AuthProvider";
-import axios from "axios";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
-// import signSideImg from "../../assets/images/login.svg";
 
 const SignIn = () => {
+  
   const navigate = useNavigate();
   const location = useLocation()
   const [showPassword, setShowPassword] = useState(false);
-  // const { signInWithEmailAndPass, googleSignIn } = useContext(AuthContext)
-  const { signInWithEmailAndPass, googleSignIn } = useAuth();
+  const { signInWithEmailAndPass, googleSignIn, user } = useAuth();
+
+  useEffect(() => {
+    if (user) {
+      const redirectTimeout = setTimeout(() => {
+        navigate(location?.state?.from || '/');
+      }, 2000);
+      return () => clearTimeout(redirectTimeout);
+    }
+  }, [navigate, user, location.state]);
+
+  useEffect(() => {
+    if (user) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "User Signed In Successfully",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+  }, [user]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -25,79 +43,23 @@ const SignIn = () => {
     signInWithEmailAndPass(email, password)
       .then(res => {
         console.log(res.user)
-
-        // login successful message 
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "User Signed In Successfully",
-          showConfirmButton: false,
-          timer: 1500
-        });
-
         // reset from
         e.target.reset()
-
-        // navigate
-        navigate(location?.state ? location.state?.from : '/');
-
       })
       .catch(err => {
         console.log(err.message)
       })
   };
 
+
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then(res => {
         console.log(res.user)
-
-        //mach user and post user
-        const user = {
-          displayName: res.user.displayName,
-          email: res.user.email,
-          photoURL: res.user.photoURL,
-        }
-
-        axios.get(`http://localhost:5000/users`)
-          .then(response => {
-            const users = response.data;
-
-            // Check if the user's email already exists in the database
-            const userExists = users.find(existingUser => existingUser.email === user.email);
-
-            if (!userExists) {
-              // If user doesn't exist in the database, post user
-              axios.post('http://localhost:5000/users', user)
-                .then(response => {
-                  console.log(response.data);
-                  if (response.data.acknowledged) {
-                    Swal.fire({
-                      position: "center",
-                      icon: "success",
-                      title: "User Signed In Successfully",
-                      showConfirmButton: false,
-                      timer: 1500
-                    });
-                  }
-                })
-                .catch(error => {
-                  console.error('Error posting user:', error);
-                });
-            } else {
-              console.log('User already exists');
-            }
-
-            // navigate
-            navigate(location?.state ? location.state?.from : '/');
-          })
-          .catch(error => {
-            console.error('Error checking existing users:', error);
-          });
-
-
       })
-
+      .catch(error => {
+        console.error('Error checking existing users:', error);
+      });
   }
 
   return (

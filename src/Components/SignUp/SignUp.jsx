@@ -1,16 +1,38 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
-import axios from "axios";
 import Swal from "sweetalert2";
-// import signSideImg from "../../assets/images/login.svg";
 
 const SignUp = () => {
-  const { createNewUser, updateUserProfile } = useContext(AuthContext)
+  
+  const { createNewUser, updateUserProfile, user } = useContext(AuthContext)
   const [showPassword, setShowPassword] = useState(false);
   const [registerError, setRegisterError] = useState();
+  const navigate = useNavigate();
+  const location = useLocation()
+
+  useEffect(() => {
+    if (user) {
+      const redirectTimeout = setTimeout(() => {
+        navigate(location?.state?.from || '/');
+      }, 2000);
+      return () => clearTimeout(redirectTimeout);
+    }
+  }, [navigate, user, location.state]);
+
+  useEffect(() => {
+    if (user) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "User Created Successfully",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+  }, [user]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -42,26 +64,6 @@ const SignUp = () => {
       .then(res => {
         console.log(res.user)
 
-        // post user to database
-        const user = {
-          displayName: name,
-          email: email,
-          photoURL: photo,
-        }
-        axios.post('http://localhost:5000/users', user)
-          .then(res => {
-            console.log(res.data)
-            if (res.data.acknowledged) {
-              Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "User Created Successfully",
-                showConfirmButton: false,
-                timer: 1500
-              });
-            }
-          })
-
         // update user profile
         updateUserProfile(name, photo)
           .then(() => {
@@ -75,15 +77,8 @@ const SignUp = () => {
         form.reset()
       })
       .catch((err) => {
-        if (err.code === "auth/email-already-in-use") {
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "User already exhist!",
-          });
-        }
+        console.log(err)
         //reset form
-        form.reset()
       });
   };
 

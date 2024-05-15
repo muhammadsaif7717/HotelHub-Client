@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Contexts/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
@@ -13,7 +13,15 @@ const MyBookings = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const [selectedBooking, setSelectedBooking] = useState(null);
     const [newDate, setNewDate] = useState(null);
+    const navigate = useNavigate();
+    const location = useLocation()
+    console.log(user)
 
+    useEffect(() => {
+        if (user == null) {
+            navigate(location?.state ? location.state?.from : '/');
+        }
+    }, [navigate, user,location.state]);
 
     useEffect(() => {
         axiousSecure.get(`/bookings?email=${user?.email}`, { withCredentials: true })
