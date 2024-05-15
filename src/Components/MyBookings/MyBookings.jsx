@@ -14,7 +14,7 @@ const MyBookings = () => {
 
     useEffect(() => {
         const filteredBookings = bookings.filter(
-            (booking) => booking.email.toLowerCase() === user.email.toLowerCase()
+            (booking) => booking.email?.toLowerCase() === user.email?.toLowerCase()
         );
         setMyBookings(filteredBookings);
     }, [bookings, user.email]);
@@ -130,7 +130,7 @@ const MyBookings = () => {
                                 setNewDate(formatDate(booking.bookedDate)); // Set default value to the currently selected booking date
                                 setModalVisible(true);
                             }} className="btn btn-success  text-white bg-blue-500 border-none">Update Date</button>
-                            <Link to={`/post-rewiew/${booking.selectedRoom._id}`} className="btn btn-success  text-white bg-blue-400 border-none">Review</Link>
+                            <Link to={`/post-review/${booking.selectedRoom._id}`} className="btn btn-success  text-white bg-blue-400 border-none">Review</Link>
                         </div>
                     </div>
                 ))}

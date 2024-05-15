@@ -46,9 +46,9 @@ const router = createBrowserRouter([
                 loader: ()=> fetch(`http://localhost:5000/bookings`)
             },
             {
-                path: "/post-rewiew/:id",
+                path: "/post-review/:id",
                 element: <PrivateRoute><PostReview></PostReview></PrivateRoute>,
-                loader: ()=> fetch(`http://localhost:5000/bookings`)
+                loader: ()=> fetch(`http://localhost:5000/rooms`)
             },
             {
                 path: "/about",
