@@ -3,6 +3,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 // import axios from "axios";
 
 const PostReview = () => {
@@ -10,7 +11,7 @@ const PostReview = () => {
     const bookings = useLoaderData();
     const { id } = useParams();
     const clickedbooking = bookings.find((booking) => booking._id === id);
-    console.log(clickedbooking);
+    // console.log(clickedbooking);
 
 
 
@@ -33,9 +34,9 @@ const PostReview = () => {
         };
 
         // Update the specific room's reviews array
-        axios.put(`http://localhost:5000/rooms/${clickedbooking._id}/reviews`, review)
+        axios.put(`https://hotelhub-server-one.vercel.app/rooms/${clickedbooking._id}/reviews`, review)
             .then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 if (res.data.acknowledged) {
                     Swal.fire({
                         position: "center",
@@ -59,6 +60,9 @@ const PostReview = () => {
 
     return (
         <div className="my-14">
+            <Helmet>
+                <title>HotelHub | Post Review</title>
+            </Helmet>
             <h2 className="font-bold text-center text-3xl mb-7">Post a Review: {clickedbooking.title}</h2>
 
             <form onSubmit={handlePostReview} className="w-96 mx-auto space-y-4">

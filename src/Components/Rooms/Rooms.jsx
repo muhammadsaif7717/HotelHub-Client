@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useRooms from "../../Hooks/useRooms";
+import { Helmet } from "react-helmet-async";
 
 
 const Rooms = () => {
@@ -10,10 +11,10 @@ const Rooms = () => {
     const [sortedRooms, setSortedRooms] = useState([]);
     const [sortOrder, setSortOrder] = useState("default");
 
-    console.log(rooms)
+    // console.log(rooms)
 
     // useEffect(() => {
-    //     axios.get('http://localhost:5000/rooms')
+    //     axios.get('https://hotelhub-server-one.vercel.app/rooms')
     //         .then(res => {
     //             setRooms(res.data);
     //         })
@@ -41,11 +42,14 @@ const Rooms = () => {
 
     return (
         <div className="container mx-auto py-12">
-            <h2 className="text-3xl font-semibold mb-8">Featured Rooms</h2>
-            <div className="mb-4">
+            <Helmet>
+                <title>HotelHub | Rooms</title>
+            </Helmet>
+            <h2 className="text-3xl text-center font-semibold mb-8">All Rooms</h2>
+            <div className="mb-7 flex items-center justify-center">
                 <select
                     id="sort"
-                    className="border rounded-md py-1 px-2"
+                    className="border-2 rounded-md border-gray-300  px-3 py-3"
                     value={sortOrder}
                     onChange={handleSortChange}
                 >
@@ -58,7 +62,7 @@ const Rooms = () => {
                 {sortedRooms.map(room => (
                     <Link to={`/details/${room._id}`} key={room.id} className="bg-white rounded-lg shadow-md overflow-hidden">
                         <img src={room.images[0]} alt={room.name} className="w-full h-64 object-cover" />
-                        <h1>{ room.title}</h1>
+                        <h1>{room.title}</h1>
                     </Link>
                 ))}
             </div>

@@ -47,19 +47,19 @@ const AuthProvider = ({ children }) => {
       const loggedUser = { email: userEmail }
 
       setUser(currentUser);
-      console.log('Observing user', currentUser)
+      // console.log('Observing user', currentUser)
       setLoading(false)
       // if user exist then issue a token
       if (currentUser) {
-        axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
-          .then(res => {
-            console.log('Token Response', res.data)
+        axios.post('https://hotelhub-server-one.vercel.app/jwt', loggedUser, { withCredentials: true })
+          .then(() => {
+            // console.log('Token Response', res.data)
           })
       }
       else {
-        axios.post('http://localhost:5000/logout', loggedUser, { withCredentials: true })
-          .then(res => {
-            console.log('Token Response', res.data)
+        axios.post('https://hotelhub-server-one.vercel.app/logout', loggedUser, { withCredentials: true })
+          .then(() => {
+            // console.log('Token Response', res.data)
           })
       }
     });

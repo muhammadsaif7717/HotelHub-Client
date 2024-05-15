@@ -41,7 +41,7 @@ const SignUp = () => {
     const email = form.email.value;
     const photo = form.photo.value;
     const password = form.password.value;
-    console.log(name, email, photo, password);
+    // console.log(name, email, photo, password);
 
     //validations
     if (password.length < 6) {
@@ -61,13 +61,13 @@ const SignUp = () => {
 
     //create new user
     createNewUser(email, password)
-      .then(res => {
-        console.log(res.user)
+      .then(() => {
+        // console.log(res.user)
 
         // update user profile
         updateUserProfile(name, photo)
           .then(() => {
-            console.log('User Updated')
+            // console.log('User Updated')
           })
           .catch(err => {
             console.log(err.message)
@@ -85,10 +85,10 @@ const SignUp = () => {
   return (
     <>
       <Helmet>
-        <title>Template | Sign Up</title>
+        <title>HotelHub | Sign Up</title>
       </Helmet>
 
-      <div className="flex gap-5 flex-col lg:flex-row justify-around items-center min-h-screen">
+      <div className="flex gap-5 flex-col lg:flex-row justify-around items-center min-h-[85vh]">
         <div className="border rounded-xl shadow-2xl w-[320px] md:w-[400px] bg-base-100 animate__animated animate__pulse">
           <h1 className="text-3xl font-bold text-center mt-3">
             Please Sign Up

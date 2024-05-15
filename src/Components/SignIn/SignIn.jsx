@@ -37,12 +37,12 @@ const SignIn = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
+    // console.log(email, password);
 
     //sign in with email and pass
     signInWithEmailAndPass(email, password)
-      .then(res => {
-        console.log(res.user)
+      .then(() => {
+        // console.log(res.user)
         // reset from
         e.target.reset()
       })
@@ -54,8 +54,8 @@ const SignIn = () => {
 
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then(res => {
-        console.log(res.user)
+      .then(() => {
+        // console.log(res.user)
       })
       .catch(error => {
         console.error('Error checking existing users:', error);
@@ -65,10 +65,10 @@ const SignIn = () => {
   return (
     <>
       <Helmet>
-        <title>Template | Sign In</title>
+        <title>HotelHub | Sign In</title>
       </Helmet>
 
-      <div className="flex gap-5 flex-col lg:flex-row justify-around items-center min-h-screen">
+      <div className="flex gap-5 flex-col lg:flex-row justify-around items-center min-h-[85vh]">
         <div className=" border rounded-xl w-[320px] md:w-[400px]  shadow-2xl bg-base-100 animate__animated animate__pulse">
           <h1 className="text-3xl font-bold text-center mt-3">
             Please Sign In

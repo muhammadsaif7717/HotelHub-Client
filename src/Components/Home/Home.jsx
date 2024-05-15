@@ -9,7 +9,7 @@ const Home = () => {
     return (
         <>
             <Helmet>
-                <title>Template | Home</title>
+                <title>HotelHub | Home</title>
             </Helmet>
 
             <div className="mt-5 mb-10">

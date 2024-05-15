@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const BookNow = () => {
     const { user } = useContext(AuthContext);
@@ -19,7 +20,7 @@ const BookNow = () => {
 
     useEffect(() => {
         // Fetch rooms
-        axios.get("http://localhost:5000/rooms")
+        axios.get("https://hotelhub-server-one.vercel.app/rooms")
             .then(res => {
                 // Find the room to book
                 const room = res.data.find(room => room._id === id);
@@ -58,9 +59,9 @@ const BookNow = () => {
             };
 
             // Post to database
-            axios.post('http://localhost:5000/bookings', roomSummary)
+            axios.post('https://hotelhub-server-one.vercel.app/bookings', roomSummary)
                 .then(res => {
-                    console.log(res.data);
+                    // console.log(res.data);
                     if (res.data.acknowledged) {
                         Swal.fire({
                             position: "center",
@@ -88,9 +89,9 @@ const BookNow = () => {
                 });
 
             // Update room availability in database
-            axios.patch(`http://localhost:5000/rooms/${roomForBook._id}`, updatedRoom)
-                .then(res => {
-                    console.log(res.data)
+            axios.patch(`https://hotelhub-server-one.vercel.app/rooms/${roomForBook._id}`, updatedRoom)
+                .then(() => {
+                    // console.log(res.data)
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -107,6 +108,9 @@ const BookNow = () => {
 
     return (
         <div className="p-10 bg-gray-300 mt-14 rounded-xl min-h-[82vh] ">
+            <Helmet>
+                <title>HotelHhub | Book Now</title>
+            </Helmet>
             <h2 className="text-3xl font-semibold mb-8 text-center">Book Now: {roomForBook?.title}</h2>
 
             <div className="space-y-7">

@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const MyBookings = () => {
     const [bookings, setBookings] = useState([])
@@ -15,13 +16,13 @@ const MyBookings = () => {
     const [newDate, setNewDate] = useState(null);
     const navigate = useNavigate();
     const location = useLocation()
-    console.log(user)
+    // console.log(user)
 
     useEffect(() => {
         if (user == null) {
             navigate(location?.state ? location.state?.from : '/');
         }
-    }, [navigate, user,location.state]);
+    }, [navigate, user, location.state]);
 
     useEffect(() => {
         axiousSecure.get(`/bookings?email=${user?.email}`, { withCredentials: true })
@@ -63,9 +64,9 @@ const MyBookings = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 // cancel and delete
-                axios.delete(`http://localhost:5000/bookings/${id}`)
+                axios.delete(`https://hotelhub-server-one.vercel.app/bookings/${id}`)
                     .then(res => {
-                        console.log(res.data)
+                        // console.log(res.data)
                         if (res.data.acknowledged) {
                             Swal.fire({
                                 title: "Deleted!",
@@ -83,9 +84,9 @@ const MyBookings = () => {
                     bookedDate: " ",
                 };
 
-                axios.patch(`http://localhost:5000/rooms/${deletingId}`, updatedRoom)
-                    .then(res => {
-                        console.log(res.data)
+                axios.patch(`https://hotelhub-server-one.vercel.app/rooms/${deletingId}`, updatedRoom)
+                    .then(() => {
+                        // console.log(res.data)
                     });
             }
         });
@@ -100,9 +101,9 @@ const MyBookings = () => {
             // Update the booking date for the selected booking
             const updatedBooking = { bookedDate: newDate };
 
-            axios.patch(`http://localhost:5000/bookings/${selectedBooking._id}`, updatedBooking)
-                .then(res => {
-                    console.log(res.data);
+            axios.patch(`https://hotelhub-server-one.vercel.app/bookings/${selectedBooking._id}`, updatedBooking)
+                .then(() => {
+                    // console.log(res.data);
                     // Update myBookings with the new date
                     setMyBookings(prevBookings =>
                         prevBookings.map(booking =>
@@ -143,6 +144,9 @@ const MyBookings = () => {
 
     return (
         <div className="my-14">
+            <Helmet>
+                <title>HotelHub | My Bookings</title>
+            </Helmet>
             <h2 className="font-bold text-3xl text-center mb-5">My Bookings: {myBookings.length}</h2>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
                 {myBookings.map(booking => (

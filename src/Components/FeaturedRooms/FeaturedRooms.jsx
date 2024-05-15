@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 const FeaturedRooms = () => {
     const [rooms, setRooms] = useState([]);
-    console.log(rooms)
+    // console.log(rooms)
 
     useEffect(() => {
-        axios.get('http://localhost:5000/rooms')
+        axios.get('https://hotelhub-server-one.vercel.app/rooms')
             .then(res => {
                 setRooms(res.data);
             });
@@ -15,7 +15,7 @@ const FeaturedRooms = () => {
 
     // Sort rooms by price in descending order
     const sortedRooms = rooms.sort((a, b) => b.pricePerNight - a.pricePerNight);
-    
+
     // Slice the first 3 rooms with the highest prices
     const top3Rooms = sortedRooms.slice(0, 3);
 

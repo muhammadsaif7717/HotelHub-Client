@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 
 const Details = () => {
@@ -8,6 +9,9 @@ const Details = () => {
 
     return (
         <div className="container mx-auto px-4 py-8">
+            <Helmet>
+                <title>HotelHub | Details</title>
+            </Helmet>
             <h2 className="font-bold text-3xl text-center mt-10">Details of: {clickedRoom.title} </h2>
             <div className="mt-14">
                 <div className="bg-white rounded-lg shadow-md overflow-hidden flex">

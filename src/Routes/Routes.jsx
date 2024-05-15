@@ -33,24 +33,24 @@ const router = createBrowserRouter([
             {
                 path: "/details/:id",
                 element: <PrivateRoute><Details></Details></PrivateRoute>,
-                loader: () => fetch('http://localhost:5000/rooms')
+                loader: () => fetch('https://hotelhub-server-one.vercel.app/rooms')
             },
             {
                 path: "/book-now/:id",
                 element: <PrivateRoute><BookNow></BookNow></PrivateRoute>,
-                loader: () => fetch(`http://localhost:5000/rooms`)
+                loader: () => fetch(`https://hotelhub-server-one.vercel.app/rooms`)
             },
             {
                 path: "/my-bookings",
                 element: <PrivateRoute><MyBookings></MyBookings></PrivateRoute>,
-                // loader: () => fetch(`http://localhost:5000/bookings`, {
+                // loader: () => fetch(`https://hotelhub-server-one.vercel.app/bookings`, {
                 //     credentials: 'include'
                 // })
             },
             {
                 path: "/post-review/:id",
                 element: <PrivateRoute><PostReview></PostReview></PrivateRoute>,
-                loader: () => fetch(`http://localhost:5000/rooms`)
+                loader: () => fetch(`https://hotelhub-server-one.vercel.app/rooms`)
             },
             {
                 path: "/about",

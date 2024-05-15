@@ -1,8 +1,12 @@
+import { Helmet } from "react-helmet-async";
 
 
 const Contact = () => {
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center">
+    <div className="min-h-[85vh] my-14 bg-gray-200 flex flex-col justify-center items-center rounded-xl">
+      <Helmet>
+        <title>HotelHub | Contact Us</title>
+      </Helmet>
       <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
         <form className="space-y-4">
@@ -24,5 +28,4 @@ const Contact = () => {
     </div>
   );
 };
-
 export default Contact;
