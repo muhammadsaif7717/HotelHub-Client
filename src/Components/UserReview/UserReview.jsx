@@ -25,11 +25,11 @@ const UserReview = () => {
           Our Customers Reviews
         </h1>
 
-        <div className="flex flex-row-reverse items-center justify-center">
+        <div className="flex flex-col-reverse gap-5 md:flex-row-reverse items-center justify-center">
           {rooms.map((room) => (
             <div key={room._id} className="flex">
               {/* Display reviews in a row */}
-              <div className="flex flex-row">
+              <div className="flex ">
                 {room.reviews.map((review, index) => (
                   <div key={index} className="card bg-base-100 shadow-xl border rounded-xl mr-4">
                     <figure className="bg-[#C0D6E8] py-5">
