@@ -68,7 +68,7 @@ const MyBookings = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 // cancel and delete
-                axios.delete(`http://localhost:5000/bookings/${id}`)
+                axios.delete(`https://hotelhub-server-one.vercel.app/bookings/${id}`)
                     .then(res => {
                         // console.log(res.data)
                         if (res.data.acknowledged) {
@@ -88,7 +88,7 @@ const MyBookings = () => {
                     bookedDate: " ",
                 };
 
-                axios.patch(`http://localhost:5000/rooms/${deletingId}`, updatedRoom)
+                axios.patch(`https://hotelhub-server-one.vercel.app/rooms/${deletingId}`, updatedRoom)
                     .then(() => {
                         // console.log(res.data)
                     });
@@ -105,7 +105,7 @@ const MyBookings = () => {
             // Update the booking date for the selected booking
             const updatedBooking = { bookedDate: newDate };
 
-            axios.patch(`http://localhost:5000/bookings/${selectedBooking._id}`, updatedBooking)
+            axios.patch(`https://hotelhub-server-one.vercel.app/bookings/${selectedBooking._id}`, updatedBooking)
                 .then(() => {
                     // console.log(res.data);
                     // Update myBookings with the new date

@@ -55,7 +55,7 @@ const AuthProvider = ({ children }) => {
             photo: currentUser.photoURL,
             role: 'user',
           }
-          axios.post(`http://localhost:5000/users`, user)
+          axios.post(`https://hotelhub-server-one.vercel.app/users`, user)
         }
       }, [4000])
 
@@ -64,13 +64,13 @@ const AuthProvider = ({ children }) => {
       setLoading(false)
       // if user exist then issue a token
       if (currentUser) {
-        axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
+        axios.post('https://hotelhub-server-one.vercel.app/jwt', loggedUser, { withCredentials: true })
           .then(() => {
             // console.log('Token Response', res.data)
           })
       }
       else {
-        axios.post('http://localhost:5000/logout', loggedUser, { withCredentials: true })
+        axios.post('https://hotelhub-server-one.vercel.app/logout', loggedUser, { withCredentials: true })
           .then(() => {
             // console.log('Token Response', res.data)
           })

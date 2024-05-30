@@ -20,7 +20,7 @@ const BookNow = () => {
 
     useEffect(() => {
         // Fetch rooms
-        axios.get("http://localhost:5000/rooms")
+        axios.get("https://hotelhub-server-one.vercel.app/rooms")
             .then(res => {
                 // Find the room to book
                 const room = res.data.find(room => room._id === id);
@@ -59,7 +59,7 @@ const BookNow = () => {
             };
 
             // Post to database
-            axios.post('http://localhost:5000/bookings', roomSummary)
+            axios.post('https://hotelhub-server-one.vercel.app/bookings', roomSummary)
                 .then(res => {
                     // console.log(res.data);
                     if (res.data.acknowledged) {
@@ -89,7 +89,7 @@ const BookNow = () => {
                 });
 
             // Update room availability in database
-            axios.patch(`http://localhost:5000/rooms/${roomForBook._id}`, updatedRoom)
+            axios.patch(`https://hotelhub-server-one.vercel.app/rooms/${roomForBook._id}`, updatedRoom)
                 .then(() => {
                     // console.log(res.data)
                 })

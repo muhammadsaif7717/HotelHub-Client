@@ -8,7 +8,7 @@ const UserReview = () => {
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/rooms`)
+    axios.get(`https://hotelhub-server-one.vercel.app/rooms`)
       .then(res => {
         const roomsData = res.data.map(room => ({
           ...room,

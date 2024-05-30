@@ -63,7 +63,7 @@ const SignIn = () => {
         //   photo: res.user.photoURL,
         //   role: 'user',
         // }
-        // axios.post(`http://localhost:5000/users`, user)
+        // axios.post(`https://hotelhub-server-one.vercel.app/users`, user)
       })
       .catch(error => {
         console.error('Error checking existing users:', error);

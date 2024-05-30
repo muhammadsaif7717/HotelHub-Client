@@ -7,7 +7,7 @@ const FeaturedRooms = () => {
     // console.log(rooms)
 
     useEffect(() => {
-        axios.get('http://localhost:5000/rooms')
+        axios.get('https://hotelhub-server-one.vercel.app/rooms')
             .then(res => {
                 setRooms(res.data);
             });

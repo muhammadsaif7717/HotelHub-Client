@@ -76,7 +76,7 @@ const SignUp = () => {
             //   photo: photo,
             //   role: 'user',
             // }
-            // axios.post(`http://localhost:5000/users`, user)
+            // axios.post(`https://hotelhub-server-one.vercel.app/users`, user)
           })
           .catch(err => {
             console.log(err.message)

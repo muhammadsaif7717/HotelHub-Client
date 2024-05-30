@@ -10,7 +10,7 @@ const useAdmin = () => {
     const { data: users = [], isLoading } = useQuery({
         queryKey: ['admin'],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/users`);
+            const res = await axios.get(`https://hotelhub-server-one.vercel.app/users`);
             return res.data;
         }
     });
