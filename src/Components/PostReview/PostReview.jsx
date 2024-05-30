@@ -34,7 +34,7 @@ const PostReview = () => {
         };
 
         // Update the specific room's reviews array
-        axios.put(`https://hotelhub-server-one.vercel.app/rooms/${clickedbooking._id}/reviews`, review)
+        axios.put(`http://localhost:5000/rooms/${clickedbooking._id}/reviews`, review)
             .then((res) => {
                 // console.log(res.data);
                 if (res.data.acknowledged) {

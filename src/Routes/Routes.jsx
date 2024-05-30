@@ -13,6 +13,10 @@ import PrivateRoute from "./PrivateRoute";
 import Details from "../Components/Details/Details";
 import BookNow from "../Components/BookNow/BookNow";
 import PostReview from "../Components/PostReview/PostReview";
+import Dashboard from "../Components/Dashboard/Dashboard";
+import AddRoom from "../Components/Dashboard/AddRoom/AddRoom";
+import AdminHome from "../Components/Dashboard/AdminHome/AdminHome";
+import ManageRoom from "../Components/Dashboard/ManageRoom/ManageRoom";
 
 
 
@@ -33,24 +37,24 @@ const router = createBrowserRouter([
             {
                 path: "/details/:id",
                 element: <PrivateRoute><Details></Details></PrivateRoute>,
-                loader: () => fetch('https://hotelhub-server-one.vercel.app/rooms')
+                loader: () => fetch('http://localhost:5000/rooms')
             },
             {
                 path: "/book-now/:id",
                 element: <PrivateRoute><BookNow></BookNow></PrivateRoute>,
-                loader: () => fetch(`https://hotelhub-server-one.vercel.app/rooms`)
+                loader: () => fetch(`http://localhost:5000/rooms`)
             },
             {
                 path: "/my-bookings",
                 element: <PrivateRoute><MyBookings></MyBookings></PrivateRoute>,
-                // loader: () => fetch(`https://hotelhub-server-one.vercel.app/bookings`, {
+                // loader: () => fetch(`http://localhost:5000/bookings`, {
                 //     credentials: 'include'
                 // })
             },
             {
                 path: "/post-review/:id",
                 element: <PrivateRoute><PostReview></PostReview></PrivateRoute>,
-                loader: () => fetch(`https://hotelhub-server-one.vercel.app/rooms`)
+                loader: () => fetch(`http://localhost:5000/rooms`)
             },
             {
                 path: "/about",
@@ -70,6 +74,24 @@ const router = createBrowserRouter([
             },
         ]
     },
+    {
+        path: '/dashboard',
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        children: [
+            {
+                path: 'add-room',
+                element: <AddRoom></AddRoom>
+            },
+            {
+                path: 'admin-home',
+                element: <AdminHome></AdminHome>
+            },
+            {
+                path: 'manage-room',
+                element: <ManageRoom></ManageRoom>
+            },
+        ]
+    }
 ]);
 
 

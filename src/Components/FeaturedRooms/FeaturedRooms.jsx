@@ -7,7 +7,7 @@ const FeaturedRooms = () => {
     // console.log(rooms)
 
     useEffect(() => {
-        axios.get('https://hotelhub-server-one.vercel.app/rooms')
+        axios.get('http://localhost:5000/rooms')
             .then(res => {
                 setRooms(res.data);
             });
@@ -29,7 +29,7 @@ const FeaturedRooms = () => {
             <h2 className="text-3xl font-semibold mb-8 text-center">Featured Rooms</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {top3Rooms.map(room => (
-                    <div key={room.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div key={room._id} className="bg-white rounded-lg shadow-md overflow-hidden">
                         <img src={room.images[0]} alt={room.name} className="w-full h-64 object-cover" />
                         <div className="p-6">
                             <h1 className="text-2xl font-semibold">{room.title}</h1>

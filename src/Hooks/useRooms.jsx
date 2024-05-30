@@ -6,7 +6,7 @@ const useRooms = () => {
     const [rooms, setRooms] = useState([]);
 
     useEffect(() => {
-        axios.get('https://hotelhub-server-one.vercel.app/rooms')
+        axios.get('http://localhost:5000/rooms')
             .then(res => {
                 setRooms(res.data);
             })

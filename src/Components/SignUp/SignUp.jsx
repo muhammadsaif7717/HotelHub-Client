@@ -5,8 +5,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 import Swal from "sweetalert2";
 
+
 const SignUp = () => {
-  
+
   const { createNewUser, updateUserProfile, user } = useContext(AuthContext)
   const [showPassword, setShowPassword] = useState(false);
   const [registerError, setRegisterError] = useState();
@@ -68,6 +69,14 @@ const SignUp = () => {
         updateUserProfile(name, photo)
           .then(() => {
             // console.log('User Updated')
+            // // after updating user post user to database
+            // const user = {
+            //   name: name,
+            //   email: email,
+            //   photo: photo,
+            //   role: 'user',
+            // }
+            // axios.post(`http://localhost:5000/users`, user)
           })
           .catch(err => {
             console.log(err.message)

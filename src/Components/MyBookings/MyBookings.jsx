@@ -68,7 +68,7 @@ const MyBookings = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 // cancel and delete
-                axios.delete(`https://hotelhub-server-one.vercel.app/bookings/${id}`)
+                axios.delete(`http://localhost:5000/bookings/${id}`)
                     .then(res => {
                         // console.log(res.data)
                         if (res.data.acknowledged) {
@@ -88,7 +88,7 @@ const MyBookings = () => {
                     bookedDate: " ",
                 };
 
-                axios.patch(`https://hotelhub-server-one.vercel.app/rooms/${deletingId}`, updatedRoom)
+                axios.patch(`http://localhost:5000/rooms/${deletingId}`, updatedRoom)
                     .then(() => {
                         // console.log(res.data)
                     });
@@ -105,7 +105,7 @@ const MyBookings = () => {
             // Update the booking date for the selected booking
             const updatedBooking = { bookedDate: newDate };
 
-            axios.patch(`https://hotelhub-server-one.vercel.app/bookings/${selectedBooking._id}`, updatedBooking)
+            axios.patch(`http://localhost:5000/bookings/${selectedBooking._id}`, updatedBooking)
                 .then(() => {
                     // console.log(res.data);
                     // Update myBookings with the new date
@@ -158,7 +158,7 @@ const MyBookings = () => {
                         <img src={booking.selectedRoom.images[0]} alt={booking.selectedRoom.title} className="w-full h-44 rounded-lg object-cover" />
                         <div className="">
                             <div className="font-bold text-xl mb-4">{booking.selectedRoom.title}</div>
-                            <p className="text-gray-700 text-base">{booking.selectedRoom.description.slice(0,85)}.</p>
+                            <p className="text-gray-700 text-base">{booking.selectedRoom.description.slice(0, 85)}.</p>
                         </div>
                         <div className="">
                             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">$ {booking.selectedRoom.pricePerNight}</span>
@@ -169,23 +169,23 @@ const MyBookings = () => {
                         </div>
                         <div className="flex gap-5 items-center justify-start">
                             <button onClick={() => handleCancelBooking(booking._id, booking.selectedRoom._id, booking.bookedDate)} className="btn btn-error text-white border-none text-2xl"
-                                 data-tooltip-id="my-tooltip"
-                                 data-tooltip-content="Delete"
-                                 data-tooltip-place="bottom"
+                                data-tooltip-id="my-tooltip"
+                                data-tooltip-content="Delete"
+                                data-tooltip-place="bottom"
                             >X</button>
                             <button onClick={() => {
                                 setSelectedBooking(booking);
                                 setNewDate(formatDate(booking.bookedDate)); // Set default value to the currently selected booking date
                                 setModalVisible(true);
                             }} className="btn btn-success  text-white bg-blue-500 border-none text-xl"
-                            data-tooltip-id="my-tooltip"
-                                 data-tooltip-content="Update Date"
-                                 data-tooltip-place="bottom"
+                                data-tooltip-id="my-tooltip"
+                                data-tooltip-content="Update Date"
+                                data-tooltip-place="bottom"
                             ><FaPen></FaPen></button>
                             <Link to={`/post-review/${booking.selectedRoom._id}`} className="btn btn-success text-2xl text-white bg-blue-400 border-none"
-                            data-tooltip-id="my-tooltip"
-                            data-tooltip-content="Post Review"
-                            data-tooltip-place="bottom"
+                                data-tooltip-id="my-tooltip"
+                                data-tooltip-content="Post Review"
+                                data-tooltip-place="bottom"
                             ><MdRateReview /></Link>
                         </div>
                     </div>

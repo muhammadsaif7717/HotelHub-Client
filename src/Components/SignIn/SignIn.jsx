@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 
 const SignIn = () => {
-  
+
   const navigate = useNavigate();
   const location = useLocation()
   const [showPassword, setShowPassword] = useState(false);
@@ -56,6 +56,14 @@ const SignIn = () => {
     googleSignIn()
       .then(() => {
         // console.log(res.user)
+        //  post user to database
+        // const user = {
+        //   name: res.user.displayName,
+        //   email: res.user.email,
+        //   photo: res.user.photoURL,
+        //   role: 'user',
+        // }
+        // axios.post(`http://localhost:5000/users`, user)
       })
       .catch(error => {
         console.error('Error checking existing users:', error);

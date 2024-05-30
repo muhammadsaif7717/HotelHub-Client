@@ -3,9 +3,11 @@ import "./Navbar.css";
 import { useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthProvider";
 import DarkMode from "../DarkMode/DarkMode";
+// import useAdmin from "../../Hooks/useAdmin";
 
 const NavBar = () => {
   const { user, signOutUser } = useContext(AuthContext)
+  // const { isAdmin } = useAdmin();
 
   const handleSignOut = () => {
     signOutUser()
@@ -28,12 +30,27 @@ const NavBar = () => {
       <NavLink className="px-5" to="/my-bookings">
         My Bookings
       </NavLink>
-      <NavLink className="px-5" to="/about">
+      <Link className="px-5" to="/dashboard/admin-home">
+        Dashboard
+      </Link>
+      {/* <div>
+        {
+          isAdmin ?
+            <Link className="px-5" to="/dashboard/admin-home">
+              Dashboard
+            </Link>
+            :
+            <NavLink className="px-5" to="/my-bookings">
+              My Bookings
+            </NavLink>
+        }
+      </div> */}
+      {/* <NavLink className="px-5" to="/about">
         About
       </NavLink>
       <NavLink className="px-5" to="/contact">
         Contact
-      </NavLink>
+      </NavLink> */}
     </>
   );
   return (
@@ -63,7 +80,7 @@ const NavBar = () => {
             </div>
             <nav
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 z-50"
+              className="menu menu-sm dropdown-content mt-3  p-2 shadow bg-base-100 rounded-box w-52 z-50"
             >
               {links}
             </nav>
